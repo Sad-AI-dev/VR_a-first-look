@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.arvid-dev.dev-kit": {
+      "version": "https://github.com/Sad-AI-dev/dev-kit_Package.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.textmeshpro": "3.0.6"
+      },
+      "hash": "357054e8115a128146391b6fdb1f5e8b5136f817"
+    },
     "com.unity.collab-proxy": {
       "version": "1.15.15",
       "depth": 0,
