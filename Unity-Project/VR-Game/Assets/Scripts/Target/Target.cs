@@ -5,7 +5,21 @@ using UnityEngine.Events;
 public class Target : MonoBehaviour
 {
     [SerializeField] UnityEvent onHit;
+    [SerializeField] private float lifeTime = 1f;
 
+    //------lifetime----------
+    private void Start()
+    {
+        StartCoroutine(LifeTimeCo());
+    }
+
+    private IEnumerator LifeTimeCo()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        StartCoroutine(DieCo());
+    }
+
+    //--------collision-----------
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.CompareTag("Projectile")) {

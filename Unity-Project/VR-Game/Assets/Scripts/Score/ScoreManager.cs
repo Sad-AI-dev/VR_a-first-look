@@ -30,4 +30,9 @@ public class ScoreManager : MonoBehaviour
         score += toAdd;
         onScoreChange?.Invoke(score);
     }
+
+    public void SetHighScore()
+    {
+        ScoreSerializeHandler.SetHighScore(score);
+    }
 }
