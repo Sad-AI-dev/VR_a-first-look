@@ -205,7 +205,8 @@ public class VRController : MonoBehaviour
     {
         targetDevice.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 pos);
         targetDevice.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rot);
-        transform.SetPositionAndRotation(pos, rot);
+        transform.localPosition = pos;
+        transform.localRotation = rot;
         //velocity
         targetDevice.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 newVelocity);
         velocity = newVelocity;
