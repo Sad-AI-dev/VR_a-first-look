@@ -61,9 +61,9 @@ public class VRController : MonoBehaviour
     public InputEvent<Vector2> secondaryAxisInput;
 
     //input lists
-    private List<InputEvent<bool>> boolInputs;
-    private List<InputEvent<float>> floatInputs;
-    private List<InputEvent<Vector2>> vectorInputs;
+    private InputEvent<bool>[] boolInputs;
+    private InputEvent<float>[] floatInputs;
+    private InputEvent<Vector2>[] vectorInputs;
 
     private void Awake()
     {
@@ -182,11 +182,11 @@ public class VRController : MonoBehaviour
         secondaryAxisButtonInput = new InputEvent<bool>(CommonUsages.secondary2DAxisClick);
 
         //----------compile lists-----------
-        boolInputs = new List<InputEvent<bool>> { triggerButtonInput, gripButtonInput,
+        boolInputs = new InputEvent<bool>[] { triggerButtonInput, gripButtonInput,
             primaryButtonInput, secondaryButtonInput, menuButtonInput, primaryAxisButtonInput,
             secondaryAxisButtonInput };
-        floatInputs = new List<InputEvent<float>> { triggerInput, gripInput };
-        vectorInputs = new List<InputEvent<Vector2>> { primaryAxisInput, secondaryAxisInput };
+        floatInputs = new InputEvent<float>[] { triggerInput, gripInput };
+        vectorInputs = new InputEvent<Vector2>[] { primaryAxisInput, secondaryAxisInput };
     }
 
     //------------detect inputs--------------
