@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class RaycastInteractor : MonoBehaviour
 {
-    [Header("settings")]
     public VRController owner;
+
+    [Header("settings")]
     public float grabRange = 1f;
     public LayerMask layerMask;
     [Space(10)]
@@ -24,7 +25,7 @@ public class RaycastInteractor : MonoBehaviour
     //line renderer
     LineRenderer lineRenderer;
 
-    private void Start()
+    private void Awake()
     {
         if (hideModel && modelObject == null) {
             Debug.LogWarning($"{name}: No model reference set!");
@@ -101,8 +102,9 @@ public class RaycastInteractor : MonoBehaviour
         if (hasInteractable) {
             isInteracting = start;
             currentInteractable.onInteract?.Invoke(start);
-            currentInteractable.onInteractAtPoint?.Invoke(owner, lineRenderer.GetPosition(1));
-            HideModel(start);
+            if (start) {
+                currentInteractable.onInteractAtPoint?.Invoke(this, lineRenderer.GetPosition(1));
+            }
         }
     }
 
@@ -113,12 +115,17 @@ public class RaycastInteractor : MonoBehaviour
         }
     }
 
-    //hide model feature
-    public void HideModel(bool state)
+    //----------------enable / disable handling----------------------
+    private void OnEnable()
     {
-        if (hideModel) {
-            modelObject.SetActive(state);
-        }
+        lineRenderer.enabled = true;
+        if (hideModel) { modelObject.SetActive(true); }
+    }
+
+    private void OnDisable()
+    {
+        lineRenderer.enabled = false;
+        if (hideModel) { modelObject.SetActive(false); }
     }
 
     //------------------editor--------------------
@@ -135,6 +142,6 @@ public class RaycastInteractor : MonoBehaviour
     }
     private void InitializeLineWidth()
     {
-        lineWidth = new AnimationCurve(new Keyframe(0f, 0.1f), new Keyframe(1f, 0.1f));
+        lineWidth = new AnimationCurve(new Keyframe(0f, 0.05f), new Keyframe(1f, 0.05f));
     }
 }

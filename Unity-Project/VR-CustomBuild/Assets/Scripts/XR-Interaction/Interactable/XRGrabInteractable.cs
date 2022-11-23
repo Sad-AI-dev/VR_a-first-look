@@ -26,8 +26,8 @@ public class XRGrabInteractable : XRInteractable
     private bool usingRb;
     private Rigidbody rb;
 
-    private VRController targetHolder;
-    private Vector3 grabbedPoint;
+    private RaycastInteractor holder;
+    private Vector3 grabbedPointOffset;
     private State state;
 
     private void Awake()
@@ -42,54 +42,89 @@ public class XRGrabInteractable : XRInteractable
         rb = rigidBody;
     }
 
-    //--------------grab states-------------
-    private void StartGrab(VRController grabber, Vector3 grabPoint)
+    //-------------------------------------State Management------------------------------------
+    private void StartGrab(RaycastInteractor grabber, Vector3 grabPoint)
     {
-        targetHolder = grabber;
-        grabbedPoint = grabPoint;
+        if (holder != null) { DetachFromInteractor(holder); } //detach from old holder
+        //update vars
+        holder = grabber;
+        grabbedPointOffset = transform.position - grabPoint;
+        //start move
         state = State.moving;
-        if (usingRb) { rb.isKinematic = false; }
+        StartMove();
     }
 
     private void StopGrab(bool start)
     {
         if (!start) {
-            if (usingRb) { rb.isKinematic = true; }
-            if (usingRb && state == State.held) { Throw(); } //only throw when held, otherwise, detach
+            DetachFromInteractor(holder);
             state = State.idle;
-            transform.SetParent(null);
         }
     }
 
+    //-----------interactor attachment----------------
+    private void AttachtoInteractor(RaycastInteractor interactor)
+    {
+        transform.SetParent(interactor.transform);
+    }
+
+    private void DetachFromInteractor(RaycastInteractor interactor)
+    {
+        transform.SetParent(null);
+        if (usingRb) { 
+            rb.isKinematic = false; //enable rb
+            if (state == State.held) { Throw(); }
+        }
+        interactor.enabled = true;
+        holder = null;
+    }
+
+    //----------------------------------movement-------------------------------------
     private void Throw()
     {
         //get hand velocity
-        rb.velocity = targetHolder.velocity * throwForceMultiplier;
+        rb.velocity = holder.owner.velocity * throwForceMultiplier;
     }
 
-    //---------------movement-------------------
+    private void StartMove()
+    {
+        if (usingRb) { rb.isKinematic = true; }
+        holder.enabled = false;
+    }
+
     private void FixedUpdate()
     {
-        Move();
+        if (state == State.moving) {
+            Rotate();
+            Move();
+        }
+    }
+
+    private void Rotate()
+    {
+        if (forceGrab) {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, holder.transform.rotation, grabRotateSpeed * Time.deltaTime);
+        }
     }
 
     private void Move()
     {
-        if (state == State.moving) {
-            //move
-            Vector3 targetPoint = GetTargetPoint();
-            MoveToGrabPos(targetPoint);
-            //reach point check
-            if (ReachPointCheck(targetPoint)) {
-                OnReachPoint(targetPoint);
-            }
+        Vector3 targetPoint = GetTargetPoint();
+        MoveToGrabPos(targetPoint);
+        //reach point check
+        if (ReachPointCheck(targetPoint)) {
+            OnReachPoint(targetPoint);
         }
     }
     private Vector3 GetTargetPoint()
     {
-        Vector3 targetPoint = targetHolder.transform.position + holdOffset;
-        if (!forceGrab) { targetPoint -= grabbedPoint; }
+        Vector3 targetPoint = holder.transform.position + GetLocalOffset();
+        if (!forceGrab) { targetPoint += grabbedPointOffset; }
         return targetPoint;
+    }
+    private Vector3 GetLocalOffset()
+    {
+        return holdOffset.x * holder.transform.right + holdOffset.y * holder.transform.up + holdOffset.z * holder.transform.forward;
     }
 
     //-------------move object------------
@@ -110,13 +145,16 @@ public class XRGrabInteractable : XRInteractable
     //------------------on point reach------------------
     private bool ReachPointCheck(Vector3 targetPos)
     {
-        return Vector3.Distance(transform.position, targetPos) < 0.01f;
+        return Vector3.Distance(transform.position, targetPos) < 0.05f;
     }
 
     private void OnReachPoint(Vector3 targetPos)
     {
         transform.position = targetPos;
         state = State.held;
-        transform.SetParent(targetHolder.transform);
+        AttachtoInteractor(holder);
+        if (forceGrab) {
+            transform.localRotation = Quaternion.identity;
+        }
     }
 }
