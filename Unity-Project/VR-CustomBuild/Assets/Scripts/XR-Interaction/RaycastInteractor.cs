@@ -6,6 +6,7 @@ using UnityEngine;
 public class RaycastInteractor : MonoBehaviour
 {
     [Header("settings")]
+    public VRController owner;
     public float grabRange = 1f;
     public LayerMask layerMask;
     [Space(10)]
@@ -18,10 +19,10 @@ public class RaycastInteractor : MonoBehaviour
 
     //vars
     private bool hasInteractable;
+    private bool isInteracting;
     private XRInteractable currentInteractable;
     //line renderer
     LineRenderer lineRenderer;
-    private bool initializedRenderer;
 
     private void Start()
     {
@@ -46,10 +47,7 @@ public class RaycastInteractor : MonoBehaviour
 
     private void Update()
     {
-        if (transform.hasChanged) {
-            RaycastCheck();
-            transform.hasChanged = false;
-        }
+        RaycastCheck();
     }
 
     //------------------raycast-------------------------------
@@ -101,14 +99,16 @@ public class RaycastInteractor : MonoBehaviour
     public void TryInteract(bool start)
     {
         if (hasInteractable) {
+            isInteracting = start;
             currentInteractable.onInteract?.Invoke(start);
+            currentInteractable.onInteractAtPoint?.Invoke(owner, lineRenderer.GetPosition(1));
             HideModel(start);
         }
     }
 
     public void TryActivate()
     {
-        if (hasInteractable) {
+        if (hasInteractable && isInteracting) {
             currentInteractable.onActivate?.Invoke();
         }
     }
@@ -116,21 +116,20 @@ public class RaycastInteractor : MonoBehaviour
     //hide model feature
     public void HideModel(bool state)
     {
-        modelObject.SetActive(state);
+        if (hideModel) {
+            modelObject.SetActive(state);
+        }
     }
 
     //------------------editor--------------------
-    private void OnValidate()
+    private void Reset()
     {
-        if (!initializedRenderer) {
-            InitializeLineInEditor();
-            InitializeLineWidth();
-        }
+        InitializeLineInEditor();
+        InitializeLineWidth();
     }
 
     private void InitializeLineInEditor()
     {
-        initializedRenderer = true;
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = 0;
     }
