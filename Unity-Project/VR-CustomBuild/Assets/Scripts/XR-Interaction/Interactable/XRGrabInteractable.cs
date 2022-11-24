@@ -56,7 +56,7 @@ public class XRGrabInteractable : XRInteractable
 
     private void StopGrab(bool start)
     {
-        if (!start) {
+        if (!start && state != State.idle) {
             DetachFromInteractor(holder);
             state = State.idle;
         }
