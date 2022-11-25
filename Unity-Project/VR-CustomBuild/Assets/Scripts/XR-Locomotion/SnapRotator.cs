@@ -20,8 +20,8 @@ public class SnapRotator : MonoBehaviour
     {
         InputState newState = GetNewInputState(input);
         if (newState != currentInputState) {
-            TurnCheck();
             currentInputState = newState; //update current
+            TurnCheck();
         }
     }
 

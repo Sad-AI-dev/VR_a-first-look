@@ -4,157 +4,134 @@ using UnityEngine;
 
 public class XRGrabInteractable : XRInteractable
 {
-    private enum State {
-        idle, moving, held
-    }
-    public enum MoveMode {
-        linear, lerp
-    }
+    private enum State { idle, moving, held }
 
-    [Header("Grab Settings")]
+    [Header("settings")]
+    public bool hideHolderModel;
+    public bool forceGrab;
     public Vector3 holdOffset;
 
-    public bool forceGrab;
-    public MoveMode moveMode;
-    public float grabMoveSpeed = 1f;
-    public float grabRotateSpeed = 1f;
+    [Header("Movement Settings")]
+    public float moveTime = 0.5f;
 
     [Header("Throw Settings")]
-    public float throwForceMultiplier = 1f;
+    public float throwForceMultiplier = 1;
 
     //vars
     private bool usingRb;
     private Rigidbody rb;
 
-    private RaycastInteractor holder;
-    private Vector3 grabbedPointOffset;
     private State state;
-
-    private void Awake()
-    {
-        onInteractAtPoint.AddListener(StartGrab);
-        onInteract.AddListener(StopGrab);
-    }
+    private float moveTimer = 0f;
 
     private void Start()
     {
-        usingRb = TryGetComponent(out Rigidbody rigidBody);
-        rb = rigidBody;
+        rb = GetComponent<Rigidbody>();
+        usingRb = rb != null;
+        //setup events
+        events.onInteractAtPoint.AddListener(StartGrab);
+        events.onInteractEnd.AddListener(StopGrab);
     }
 
-    //-------------------------------------State Management------------------------------------
-    private void StartGrab(RaycastInteractor grabber, Vector3 grabPoint)
+    //------------------------------start stop---------------------------------
+    public void StartGrab(Vector3 grabPoint)
     {
-        if (holder != null) { DetachFromInteractor(holder); } //detach from old holder
-        //update vars
-        holder = grabber;
-        grabbedPointOffset = transform.position - grabPoint;
-        //start move
-        state = State.moving;
-        StartMove();
+        interactor.enabled = false; //disable interactor
+        if (usingRb) { rb.isKinematic = true; } //deactivate physics
+        StartMoving();
     }
 
-    private void StopGrab(bool start)
+    public void StopGrab()
     {
-        if (!start && state != State.idle) {
-            DetachFromInteractor(holder);
-            state = State.idle;
-        }
-    }
-
-    //-----------interactor attachment----------------
-    private void AttachtoInteractor(RaycastInteractor interactor)
-    {
-        transform.SetParent(interactor.transform);
-    }
-
-    private void DetachFromInteractor(RaycastInteractor interactor)
-    {
-        transform.SetParent(null);
-        if (usingRb) { 
-            rb.isKinematic = false; //enable rb
-            if (state == State.held) { Throw(); }
-        }
         interactor.enabled = true;
-        holder = null;
+        if (usingRb) { rb.isKinematic = false; } //activate physics
+        if (state == State.held) { 
+            DetachFromInteractor(interactor);
+            Throw();
+        }
+        state = State.idle;
     }
 
-    //----------------------------------movement-------------------------------------
-    private void Throw()
+    //-------------------------------------movement--------------------------------------
+    private void StartMoving()
     {
-        //get hand velocity
-        rb.velocity = holder.owner.velocity * throwForceMultiplier;
-    }
-
-    private void StartMove()
-    {
-        if (usingRb) { rb.isKinematic = true; }
-        holder.enabled = false;
+        moveTimer = 0f;
+        state = State.moving;
     }
 
     private void FixedUpdate()
     {
         if (state == State.moving) {
-            Rotate();
-            Move();
+            moveTimer += Time.deltaTime;
+            if (moveTimer < moveTime) {
+                MoveToPoint(GetTargetPoint());
+                RotateToRotation(GetTargetRotation());
+            }
+            else { OnReachDestination(GetTargetPoint(), GetTargetRotation()); }
         }
     }
 
-    private void Rotate()
-    {
-        if (forceGrab) {
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, holder.transform.rotation, grabRotateSpeed * Time.deltaTime);
-        }
-    }
-
-    private void Move()
-    {
-        Vector3 targetPoint = GetTargetPoint();
-        MoveToGrabPos(targetPoint);
-        //reach point check
-        if (ReachPointCheck(targetPoint)) {
-            OnReachPoint(targetPoint);
-        }
-    }
+    //-----move----
     private Vector3 GetTargetPoint()
     {
-        Vector3 targetPoint = holder.transform.position + GetLocalOffset();
-        if (!forceGrab) { targetPoint += grabbedPointOffset; }
-        return targetPoint;
-    }
-    private Vector3 GetLocalOffset()
-    {
-        return holdOffset.x * holder.transform.right + holdOffset.y * holder.transform.up + holdOffset.z * holder.transform.forward;
+        return interactor.transform.position;
     }
 
-    //-------------move object------------
-    private void MoveToGrabPos(Vector3 targetPos)
+    private void MoveToPoint(Vector3 targetPos)
     {
-        float speed = grabMoveSpeed * 100f * Time.deltaTime;
-        switch (moveMode) {
-            case MoveMode.linear:
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, speed);
-                break;
+        transform.position = Vector3.Lerp(transform.position, targetPos, moveTimer / moveTime);
+    }
 
-            case MoveMode.lerp:
-                transform.position = Vector3.Lerp(transform.position, targetPos, speed);
-                break;
+    //----rotate---
+    private Quaternion GetTargetRotation()
+    {
+        return interactor.transform.rotation;
+    }
+
+    private void RotateToRotation(Quaternion targetRotation)
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, moveTimer / moveTime);
+    }
+
+    //------------on reach destination-------------
+    private void OnReachDestination(Vector3 targetPos, Quaternion targetRotation)
+    {
+        state = State.held;
+        transform.SetPositionAndRotation(targetPos, targetRotation);
+        AttachToInteractor(interactor);
+    }
+
+    //----------------------------------------throw behavior------------------------------------------
+    private void Throw()
+    {
+        if (usingRb) {
+            rb.velocity = interactor.owner.velocity * throwForceMultiplier;
         }
     }
 
-    //------------------on point reach------------------
-    private bool ReachPointCheck(Vector3 targetPos)
+    //------------------------------------------update interactor----------------------------------------
+    public override void SetInteractor(XRRayInteractor rayInteractor)
     {
-        return Vector3.Distance(transform.position, targetPos) < 0.05f;
+        if (state != State.idle) {
+            interactor.TryEndInteract();
+        }
+         interactor = rayInteractor;
     }
 
-    private void OnReachPoint(Vector3 targetPos)
+    //------------------------------------------attach functions-----------------------------------------
+    private void AttachToInteractor(XRRayInteractor rayInteractor)
     {
-        transform.position = targetPos;
-        state = State.held;
-        AttachtoInteractor(holder);
-        if (forceGrab) {
-            transform.localRotation = Quaternion.identity;
+        transform.SetParent(rayInteractor.transform);
+        if (hideHolderModel) {
+            rayInteractor.model.SetActive(false);
+        }
+    }
+
+    private void DetachFromInteractor(XRRayInteractor rayInteractor)
+    {
+        transform.SetParent(null);
+        if (hideHolderModel) {
+            rayInteractor.model.SetActive(true);
         }
     }
 }

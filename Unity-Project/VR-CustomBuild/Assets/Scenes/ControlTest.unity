@@ -290,286 +290,6 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   directionalInputs: []
---- !u!1 &274090608
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 274090609}
-  - component: {fileID: 274090611}
-  - component: {fileID: 274090610}
-  - component: {fileID: 274090612}
-  m_Layer: 0
-  m_Name: TestInteractor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &274090609
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274090608}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.63}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2044562282}
-  m_Father: {fileID: 1764396584}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &274090610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274090608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d7ea2458e3c594fa6e85eeb4ebd785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 0}
-  grabRange: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  hideModel: 0
-  modelObject: {fileID: 2044562281}
-  lineColor:
-    serializedVersion: 2
-    key0: {r: 0.18444283, g: 0.37635818, b: 0.6226415, a: 1}
-    key1: {r: 0.35283017, g: 0.9408677, b: 1, a: 0.22352941}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 26600
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 45489
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  lineWidth:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
---- !u!120 &274090611
-LineRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274090608}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Positions: []
-  m_Parameters:
-    serializedVersion: 3
-    widthMultiplier: 1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
-      key4: {r: 0, g: 0, b: 0, a: 0}
-      key5: {r: 0, g: 0, b: 0, a: 0}
-      key6: {r: 0, g: 0, b: 0, a: 0}
-      key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-    shadowBias: 0.5
-    generateLightingData: 0
-  m_UseWorldSpace: 1
-  m_Loop: 0
---- !u!114 &274090612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274090608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a21e38fdff3973747ab49366139b5601, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonInputs:
-  - name: Interact
-    onButtonDown:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 274090610}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryInteract
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    onButtonHeld:
-      m_PersistentCalls:
-        m_Calls: []
-    onButtonUp:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 274090610}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryInteract
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    codes: 65000000
-    buttonCodes: []
-  - name: Activate
-    onButtonDown:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 274090610}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryActivate
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    onButtonHeld:
-      m_PersistentCalls:
-        m_Calls: []
-    onButtonUp:
-      m_PersistentCalls:
-        m_Calls: []
-    codes: 43010000
-    buttonCodes: []
-  axisInputs: []
-  directionalInputs: []
 --- !u!1 &279213640
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +301,6 @@ GameObject:
   - component: {fileID: 279213641}
   - component: {fileID: 279213644}
   - component: {fileID: 279213643}
-  - component: {fileID: 279213642}
   m_Layer: 0
   m_Name: Fingers
   m_TagString: Untagged
@@ -604,19 +323,6 @@ Transform:
   m_Father: {fileID: 1586616014}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -17.841, z: 0}
---- !u!65 &279213642
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 279213640}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &279213643
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -678,7 +384,6 @@ GameObject:
   - component: {fileID: 402439537}
   - component: {fileID: 402439540}
   - component: {fileID: 402439539}
-  - component: {fileID: 402439538}
   m_Layer: 0
   m_Name: Palm
   m_TagString: Untagged
@@ -701,19 +406,6 @@ Transform:
   m_Father: {fileID: 2140257507}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &402439538
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 402439536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &402439539
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -891,23 +583,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3052cb44a39a3554ebf9aceac452f184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onHover:
-    m_PersistentCalls:
-      m_Calls: []
-  onInteract:
-    m_PersistentCalls:
-      m_Calls: []
-  onInteractAtPoint:
-    m_PersistentCalls:
-      m_Calls: []
-  onActivate:
-    m_PersistentCalls:
-      m_Calls: []
-  holdOffset: {x: 0, y: 0, z: 0}
+  events:
+    onHoverStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onHoverEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onInteractStart:
+      m_PersistentCalls:
+        m_Calls: []
+    onInteractEnd:
+      m_PersistentCalls:
+        m_Calls: []
+    onInteractAtPoint:
+      m_PersistentCalls:
+        m_Calls: []
+    onActivate:
+      m_PersistentCalls:
+        m_Calls: []
+  hideHolderModel: 1
   forceGrab: 0
-  moveMode: 0
-  grabMoveSpeed: 0.01
-  grabRotateSpeed: 1
+  holdOffset: {x: 0, y: 0, z: 0}
+  moveTime: 0.5
   throwForceMultiplier: 2
 --- !u!1 &783827294
 GameObject:
@@ -919,7 +617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 783827295}
   - component: {fileID: 783827298}
-  - component: {fileID: 783827297}
+  - component: {fileID: 783827299}
   - component: {fileID: 783827296}
   m_Layer: 0
   m_Name: RaycastInteractor
@@ -962,10 +660,10 @@ MonoBehaviour:
     onButtonDown:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 783827297}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryInteract
-          m_Mode: 6
+        - m_Target: {fileID: 783827299}
+          m_TargetAssemblyTypeName: XRRayInteractor, Assembly-CSharp
+          m_MethodName: TryStartInteract
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -980,10 +678,10 @@ MonoBehaviour:
     onButtonUp:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 783827297}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryInteract
-          m_Mode: 6
+        - m_Target: {fileID: 783827299}
+          m_TargetAssemblyTypeName: XRRayInteractor, Assembly-CSharp
+          m_MethodName: TryEndInteract
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -998,8 +696,8 @@ MonoBehaviour:
     onButtonDown:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 783827297}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
+        - m_Target: {fileID: 783827299}
+          m_TargetAssemblyTypeName: XRRayInteractor, Assembly-CSharp
           m_MethodName: TryActivate
           m_Mode: 1
           m_Arguments:
@@ -1019,79 +717,6 @@ MonoBehaviour:
     pressed: 0
   axisInputs: []
   directionalInputs: []
---- !u!114 &783827297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783827294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d7ea2458e3c594fa6e85eeb4ebd785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 1482091433}
-  grabRange: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  hideModel: 1
-  modelObject: {fileID: 1586616013}
-  lineColor:
-    serializedVersion: 2
-    key0: {r: 0.1672837, g: 0.31310418, b: 0.6981132, a: 1}
-    key1: {r: 0.19245279, g: 0.86807513, b: 1, a: 0.97158015}
-    key2: {r: 0, g: 0, b: 0, a: 0.30980393}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 31418
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 44525
-    atime2: 65535
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 3
-  lineWidth:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!120 &783827298
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1189,6 +814,112 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &783827299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783827294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b563ff620d992428d1f07e32975330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1482091433}
+  model: {fileID: 1586616013}
+  interactRange: 1
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 1
+  interactableTag: Interactable
+  lineColor:
+    serializedVersion: 2
+    key0: {r: 0.1672837, g: 0.31310418, b: 0.6981132, a: 1}
+    key1: {r: 0.19245279, g: 0.86807513, b: 1, a: 0.97158015}
+    key2: {r: 0, g: 0, b: 0, a: 0.30980393}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 31418
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 44525
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
+  invalidColor:
+    serializedVersion: 2
+    key0: {r: 0.4056604, g: 0.082280174, b: 0.1014435, a: 1}
+    key1: {r: 1, g: 0.19215685, b: 0.20068, a: 0.97158015}
+    key2: {r: 0, g: 0, b: 0, a: 0.30980393}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 31418
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 44525
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
+  lineWidth:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.05
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.05
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  onHoverNewObject:
+    m_PersistentCalls:
+      m_Calls: []
+  line: {fileID: 783827298}
 --- !u!1 &823223897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084273855}
   - component: {fileID: 1084273857}
-  - component: {fileID: 1084273856}
+  - component: {fileID: 1084273859}
   - component: {fileID: 1084273858}
   m_Layer: 0
   m_Name: RaycastInteractor
@@ -1255,79 +986,6 @@ Transform:
   m_Father: {fileID: 1568051078}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1084273856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084273854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28d7ea2458e3c594fa6e85eeb4ebd785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  owner: {fileID: 1568051079}
-  grabRange: 1
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  hideModel: 1
-  modelObject: {fileID: 2140257506}
-  lineColor:
-    serializedVersion: 2
-    key0: {r: 0.1672837, g: 0.31310418, b: 0.6981132, a: 1}
-    key1: {r: 0.19245279, g: 0.86807513, b: 1, a: 0.97158015}
-    key2: {r: 0, g: 0, b: 0, a: 0.30980393}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 31418
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 44525
-    atime2: 65535
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 3
-  lineWidth:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 0.02
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  lineMaterial: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!120 &1084273857
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1444,10 +1102,10 @@ MonoBehaviour:
     onButtonDown:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084273856}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryInteract
-          m_Mode: 6
+        - m_Target: {fileID: 1084273859}
+          m_TargetAssemblyTypeName: XRRayInteractor, Assembly-CSharp
+          m_MethodName: TryStartInteract
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1462,10 +1120,10 @@ MonoBehaviour:
     onButtonUp:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084273856}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
-          m_MethodName: TryInteract
-          m_Mode: 6
+        - m_Target: {fileID: 1084273859}
+          m_TargetAssemblyTypeName: XRRayInteractor, Assembly-CSharp
+          m_MethodName: TryEndInteract
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1480,8 +1138,8 @@ MonoBehaviour:
     onButtonDown:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084273856}
-          m_TargetAssemblyTypeName: RaycastInteractor, Assembly-CSharp
+        - m_Target: {fileID: 1084273859}
+          m_TargetAssemblyTypeName: XRRayInteractor, Assembly-CSharp
           m_MethodName: TryActivate
           m_Mode: 1
           m_Arguments:
@@ -1501,6 +1159,112 @@ MonoBehaviour:
     pressed: 0
   axisInputs: []
   directionalInputs: []
+--- !u!114 &1084273859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084273854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b563ff620d992428d1f07e32975330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1568051079}
+  model: {fileID: 2140257506}
+  interactRange: 1
+  rayMask:
+    serializedVersion: 2
+    m_Bits: 1
+  interactableTag: Interactable
+  lineColor:
+    serializedVersion: 2
+    key0: {r: 0.1672837, g: 0.31310418, b: 0.6981132, a: 1}
+    key1: {r: 0.19245279, g: 0.86807513, b: 1, a: 0.97158015}
+    key2: {r: 0, g: 0, b: 0, a: 0.30980393}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 31418
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 44525
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
+  invalidColor:
+    serializedVersion: 2
+    key0: {r: 0.4056604, g: 0.082280174, b: 0.1014435, a: 1}
+    key1: {r: 1, g: 0.19215685, b: 0.20068, a: 0.97158015}
+    key2: {r: 0, g: 0, b: 0, a: 0.30980393}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 31418
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 44525
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 3
+  lineWidth:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.05
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.05
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  lineMat: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  onHoverNewObject:
+    m_PersistentCalls:
+      m_Calls: []
+  line: {fileID: 1084273857}
 --- !u!1 &1291861241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1276,6 @@ GameObject:
   - component: {fileID: 1291861242}
   - component: {fileID: 1291861245}
   - component: {fileID: 1291861244}
-  - component: {fileID: 1291861243}
   m_Layer: 0
   m_Name: Fingers
   m_TagString: Untagged
@@ -1535,19 +1298,6 @@ Transform:
   m_Father: {fileID: 2140257507}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 17.841, z: 0}
---- !u!65 &1291861243
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291861241}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1291861244
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1609,7 +1359,6 @@ GameObject:
   - component: {fileID: 1401580583}
   - component: {fileID: 1401580586}
   - component: {fileID: 1401580585}
-  - component: {fileID: 1401580584}
   m_Layer: 0
   m_Name: Palm
   m_TagString: Untagged
@@ -1632,19 +1381,6 @@ Transform:
   m_Father: {fileID: 1586616014}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1401580584
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1401580582}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1401580585
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2018,7 +1754,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 503915903}
-  - {fileID: 274090609}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2130,7 +1865,7 @@ GameObject:
   - component: {fileID: 2000079340}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Teleportable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2214,103 +1949,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000079338}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2044562281
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2044562282}
-  - component: {fileID: 2044562285}
-  - component: {fileID: 2044562284}
-  - component: {fileID: 2044562283}
-  m_Layer: 0
-  m_Name: model
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2044562282
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044562281}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 274090609}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &2044562283
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044562281}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &2044562284
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044562281}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2044562285
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044562281}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2140257506
 GameObject:
   m_ObjectHideFlags: 0
