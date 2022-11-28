@@ -16,13 +16,18 @@ public class XRGrabInteractable : XRInteractable
 
     [Header("Throw Settings")]
     public float throwForceMultiplier = 1;
+    public float throwForceAngularMultiplier = 1;
 
     //vars
     private bool usingRb;
     private Rigidbody rb;
 
     private State state;
+    //movement vars
     private float moveTimer = 0f;
+    private Vector3 grabPointOffset;
+    private Vector3 startPos;
+    private Quaternion startRot;
 
     private void Start()
     {
@@ -38,7 +43,7 @@ public class XRGrabInteractable : XRInteractable
     {
         interactor.enabled = false; //disable interactor
         if (usingRb) { rb.isKinematic = true; } //deactivate physics
-        StartMoving();
+        StartMoving(grabPoint);
     }
 
     public void StopGrab()
@@ -53,10 +58,15 @@ public class XRGrabInteractable : XRInteractable
     }
 
     //-------------------------------------movement--------------------------------------
-    private void StartMoving()
+    private void StartMoving(Vector3 grabPoint)
     {
         moveTimer = 0f;
         state = State.moving;
+        //record start data
+        startPos = transform.position;
+        startRot = transform.rotation;
+        //calc grab point offset
+        grabPointOffset = transform.position - grabPoint;
     }
 
     private void FixedUpdate()
@@ -74,23 +84,29 @@ public class XRGrabInteractable : XRInteractable
     //-----move----
     private Vector3 GetTargetPoint()
     {
-        return interactor.transform.position;
+        Vector3 targetPoint = interactor.transform.position + GetInteractorLocalVector(holdOffset);
+        if (!forceGrab) { targetPoint += grabPointOffset; }
+        return targetPoint;
+    }
+    private Vector3 GetInteractorLocalVector(Vector3 v)
+    {
+        return v.x * interactor.transform.right + v.y * interactor.transform.up + v.z * interactor.transform.forward;
     }
 
     private void MoveToPoint(Vector3 targetPos)
     {
-        transform.position = Vector3.Lerp(transform.position, targetPos, moveTimer / moveTime);
+        transform.position = Vector3.Lerp(startPos, targetPos, moveTimer / moveTime);
     }
 
     //----rotate---
     private Quaternion GetTargetRotation()
     {
-        return interactor.transform.rotation;
+        return forceGrab ? transform.rotation : interactor.transform.rotation;
     }
 
     private void RotateToRotation(Quaternion targetRotation)
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, moveTimer / moveTime);
+        transform.rotation = Quaternion.Slerp(startRot, targetRotation, moveTimer / moveTime);
     }
 
     //------------on reach destination-------------
@@ -106,6 +122,7 @@ public class XRGrabInteractable : XRInteractable
     {
         if (usingRb) {
             rb.velocity = interactor.owner.velocity * throwForceMultiplier;
+            rb.angularVelocity = GetInteractorLocalVector(interactor.owner.angularVelocity) * throwForceAngularMultiplier;
         }
     }
 

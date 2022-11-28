@@ -15,6 +15,7 @@ public class SnapRotator : MonoBehaviour
 
     //vars
     private InputState currentInputState;
+    private bool turnLeftReq, turnRightReq;
     
     public void TryTurn(float input)
     {
@@ -35,11 +36,11 @@ public class SnapRotator : MonoBehaviour
     {
         switch (currentInputState) {
             case InputState.left:
-                TurnLeft();
+                turnLeftReq = true;
                 break;
 
             case InputState.right:
-                TurnRight();
+                turnRightReq = true;
                 break;
         }
     }
@@ -53,5 +54,17 @@ public class SnapRotator : MonoBehaviour
     public void TurnRight()
     {
         target.Rotate(new Vector3(0, turnAngle, 0));
+    }
+
+    private void FixedUpdate()
+    {
+        if (turnLeftReq) { 
+            TurnLeft();
+            turnLeftReq = false;
+        }
+        else if (turnRightReq) { 
+            TurnRight();
+            turnRightReq = false;
+        }
     }
 }

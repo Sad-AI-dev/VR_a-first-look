@@ -33,7 +33,7 @@ public class XRRayInteractor : MonoBehaviour
     public Material lineMat;
 
     [Header("Events")]
-    public UnityEvent onHoverNewObject;
+    public UnityEvent<HitResult> onHoverNewObject;
 
     //vars
     [HideInInspector] public LineRenderer line;
@@ -56,6 +56,7 @@ public class XRRayInteractor : MonoBehaviour
     {
         HitResult newResult = GetNewResult();
         if (newResult != null) { OnObjectFound(newResult); }
+        else { NothingFoundCheck(); }
         ResetInteractionState(newResult);
         lastResult = newResult; //update last result
         //update visuals
@@ -82,12 +83,8 @@ public class XRRayInteractor : MonoBehaviour
     //----on object found events-----
     private void OnObjectFound(HitResult newResult)
     {
-        HoverNewObjectCheck(newResult);
-    }
-    private void HoverNewObjectCheck(HitResult newResult)
-    {
         if (lastResult == null || lastResult.hit.transform != newResult.hit.transform) {
-            onHoverNewObject?.Invoke();
+            onHoverNewObject?.Invoke(newResult);
             TryActivateInteractableHoverEvents(newResult);
         }
     }
@@ -98,6 +95,14 @@ public class XRRayInteractor : MonoBehaviour
         }
         if (lastResult != null && lastResult.isInteractable) {
             lastResult.interactable.events.onHoverEnd?.Invoke();
+        }
+    }
+
+    //-----------nothing found events------------
+    private void NothingFoundCheck()
+    {
+        if (lastResult != null) {
+            onHoverNewObject?.Invoke(null);
         }
     }
 

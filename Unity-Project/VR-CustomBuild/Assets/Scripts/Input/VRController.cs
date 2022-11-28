@@ -44,6 +44,7 @@ public class VRController : MonoBehaviour
 
     //input vars
     public Vector3 velocity { get; private set; }
+    public Vector3 angularVelocity { get; private set; }
 
     //bool events
     public InputEvent<bool> triggerButtonInput;
@@ -210,6 +211,9 @@ public class VRController : MonoBehaviour
         //velocity
         targetDevice.TryGetFeatureValue(CommonUsages.deviceVelocity, out Vector3 newVelocity);
         velocity = newVelocity;
+        //rot velocity
+        targetDevice.TryGetFeatureValue(CommonUsages.deviceAngularVelocity, out Vector3 newRotVelocity);
+        angularVelocity = newRotVelocity;
     }
 
     //-------read button inputs------
