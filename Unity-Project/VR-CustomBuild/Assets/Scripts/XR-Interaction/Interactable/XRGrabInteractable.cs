@@ -101,7 +101,7 @@ public class XRGrabInteractable : XRInteractable
     //----rotate---
     private Quaternion GetTargetRotation()
     {
-        return forceGrab ? transform.rotation : interactor.transform.rotation;
+        return forceGrab ? interactor.transform.rotation : transform.rotation;
     }
 
     private void RotateToRotation(Quaternion targetRotation)
@@ -121,9 +121,18 @@ public class XRGrabInteractable : XRInteractable
     private void Throw()
     {
         if (usingRb) {
-            rb.velocity = interactor.owner.velocity * throwForceMultiplier;
-            rb.angularVelocity = GetInteractorLocalVector(interactor.owner.angularVelocity) * throwForceAngularMultiplier;
+            rb.AddForce(GetInteractorLocalVector(interactor.owner.velocity) * (100 * throwForceMultiplier));
+            rb.angularVelocity = EulerToRadiansPerSecond(GetInteractorLocalVector(interactor.owner.angularVelocity)) * (-1 * throwForceAngularMultiplier);
         }
+    }
+
+    //rb angular v is measured in radians per second, but owner.angularVelocity is measured in euler angles
+    private Vector3 EulerToRadiansPerSecond(Vector3 eulers)
+    {
+        //step 1: convert deg to rad
+        eulers *= Mathf.Deg2Rad;
+        //step 2: convert to per second measurement
+        return eulers / Time.deltaTime;
     }
 
     //------------------------------------------update interactor----------------------------------------
